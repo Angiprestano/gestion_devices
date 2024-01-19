@@ -16,7 +16,7 @@ import java.util.UUID;
 @ToString
 public class Device {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private UUID id;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
