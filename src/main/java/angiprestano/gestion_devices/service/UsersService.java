@@ -49,4 +49,9 @@ public class UsersService {
         User found=this.findById(id);
         userDAO.save(found);
     }
+
+    public User findByEmail(String email)throws NotFoundException {
+        return userDAO.findByEmail(email).orElseThrow(()->new NotFoundException("The user with email" + email + "is found"));
+    }
+
 }
