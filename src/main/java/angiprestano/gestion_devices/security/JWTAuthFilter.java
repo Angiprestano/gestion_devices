@@ -38,7 +38,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
             String id = jwtTools.extractIdFromToken(accessToken); // L'id è nel token quindi devo estrarlo da lì
             User user = usersService.findById(UUID.fromString(id));
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user, null);
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             filterChain.doFilter(request, response); // va al prossimo elemento della catena
         }
